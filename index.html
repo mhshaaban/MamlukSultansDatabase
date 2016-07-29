@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="maptable.css">
+    <title>Mamlūk Sultans Database</title>
+    <h2><center>Mamlūk Sultans Databas</center></h2>
+    <p><center>A basic database of Mamlūk sultans showing the reign of each.</center></p>
+</head>
+<body>
+
+<script src="d3.min.js" charset="utf-8"></script>
+<script src="topojson.min.js"></script>
+<script src="maptable.min.js"></script>
+<div id="vizContainer" class='container'></div>
+
+<script>
+    
+    var viz = d3.maptable('#vizContainer')
+            .csv('mamluk-sultans.csv')
+            .map({ path: '' })
+            .columns({
+                period: {
+                filterMethod: 'dropdown',
+            }
+            })
+            .filters({
+                show: ['period','name']
+            })
+            .table({
+                show: ['period','name','reign-ah','reign-ce']
+            })
+            .render();
+
+</script>
+</body>
+
+<footer>
+
+    <p><center>This database is built by.</center></p>
+
+</footer>    
+
+</html>
